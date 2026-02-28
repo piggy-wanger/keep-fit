@@ -21,7 +21,11 @@ app.get('/api/health', (req, res) => {
 
 // 认证路由
 import authRoutes from './routes/auth.js';
+import healthRoutes from './routes/health.js';
+import { authenticateToken } from './middleware/auth.js';
+
 app.use('/api/auth', authRoutes);
+app.use('/api/health', authenticateToken, healthRoutes);
 
 // 错误处理中间件
 app.use((err, req, res, next) => {

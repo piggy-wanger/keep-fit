@@ -14,6 +14,33 @@ function Home() {
     navigate('/login');
   };
 
+  // 功能卡片数据
+  const features = [
+    { icon: '📊', title: '健康数据', desc: '记录体重、血压、步数', path: '/health', available: true },
+    { icon: '🏋️', title: '训练计划', desc: '制定你的健身计划', path: '/training', available: false },
+    { icon: '✅', title: '每日打卡', desc: '坚持打卡获得奖励', path: '/checkin', available: false },
+    { icon: '🎯', title: '成就系统', desc: '解锁成就获得经验', path: '/achievements', available: false },
+    { icon: '👥', title: '健身搭子', desc: '邀请好友一起锻炼', path: '/partners', available: false },
+    { icon: '🤖', title: 'AI 助手', desc: '智能健身建议', path: '/ai', available: false },
+  ];
+
+  const handleCardClick = (feature) => {
+    if (feature.available) {
+      navigate(feature.path);
+    }
+  };
+
+const { Title, Text } = Typography;
+
+function Home() {
+  const { user, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       {/* 顶部导航 */}
@@ -57,43 +84,25 @@ function Home() {
           </div>
         </Card>
 
-        {/* 功能占位卡片 */}
+        {/* 功能卡片 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <Card hoverable className="text-center">
-            <div className="text-4xl mb-3">📊</div>
-            <Title level={5}>健康数据</Title>
-            <Text type="secondary">记录体重、血压、步数</Text>
-          </Card>
-
-          <Card hoverable className="text-center">
-            <div className="text-4xl mb-3">🏋️</div>
-            <Title level={5}>训练计划</Title>
-            <Text type="secondary">制定你的健身计划</Text>
-          </Card>
-
-          <Card hoverable className="text-center">
-            <div className="text-4xl mb-3">✅</div>
-            <Title level={5}>每日打卡</Title>
-            <Text type="secondary">坚持打卡获得奖励</Text>
-          </Card>
-
-          <Card hoverable className="text-center">
-            <div className="text-4xl mb-3">🎯</div>
-            <Title level={5}>成就系统</Title>
-            <Text type="secondary">解锁成就获得经验</Text>
-          </Card>
-
-          <Card hoverable className="text-center">
-            <div className="text-4xl mb-3">👥</div>
-            <Title level={5}>健身搭子</Title>
-            <Text type="secondary">邀请好友一起锻炼</Text>
-          </Card>
-
-          <Card hoverable className="text-center">
-            <div className="text-4xl mb-3">🤖</div>
-            <Title level={5}>AI 助手</Title>
-            <Text type="secondary">智能健身建议</Text>
-          </Card>
+          {features.map((feature, index) => (
+            <Card
+              key={index}
+              hoverable={feature.available}
+              className={`text-center ${!feature.available ? 'opacity-60 cursor-not-allowed' : ''}`}
+              onClick={() => handleCardClick(feature)}
+            >
+              <div className="text-4xl mb-3">{feature.icon}</div>
+              <Title level={5}>{feature.title}</Title>
+              <Text type="secondary">{feature.desc}</Text>
+              {!feature.available && (
+                <div className="mt-2">
+                  <Text type="secondary" className="text-xs">开发中...</Text>
+                </div>
+              )}
+            </Card>
+          ))}
         </div>
 
         {/* 开发提示 */}

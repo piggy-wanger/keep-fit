@@ -3,6 +3,7 @@ import { useAuthStore } from './stores/authStore';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import Health from './pages/Health';
 
 // 受保护的路由组件
 function ProtectedRoute({ children }) {
@@ -54,6 +55,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/health"
+          element={
+            <ProtectedRoute>
+              <Health />
             </ProtectedRoute>
           }
         />
