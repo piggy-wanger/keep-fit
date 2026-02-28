@@ -7,6 +7,7 @@ import Health from './pages/Health';
 import Training from './pages/Training';
 import Checkin from './pages/Checkin';
 import Achievements from './pages/Achievements';
+import AI from './pages/AI';
 
 // 受保护的路由组件
 function ProtectedRoute({ children }) {
@@ -90,6 +91,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Achievements />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ai"
+          element={
+            <ProtectedRoute>
+              <AI />
             </ProtectedRoute>
           }
         />
