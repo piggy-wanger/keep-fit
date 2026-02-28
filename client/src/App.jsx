@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import Health from './pages/Health';
+import Training from './pages/Training';
 
 // 受保护的路由组件
 function ProtectedRoute({ children }) {
@@ -63,6 +64,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Health />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/training"
+          element={
+            <ProtectedRoute>
+              <Training />
             </ProtectedRoute>
           }
         />

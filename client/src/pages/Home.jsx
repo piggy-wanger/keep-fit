@@ -17,7 +17,7 @@ function Home() {
   // 功能卡片数据
   const features = [
     { icon: '📊', title: '健康数据', desc: '记录体重、血压、步数', path: '/health', available: true },
-    { icon: '🏋️', title: '训练计划', desc: '制定你的健身计划', path: '/training', available: false },
+    { icon: '🏋️', title: '训练计划', desc: '制定你的健身计划', path: '/training', available: true },
     { icon: '✅', title: '每日打卡', desc: '坚持打卡获得奖励', path: '/checkin', available: false },
     { icon: '🎯', title: '成就系统', desc: '解锁成就获得经验', path: '/achievements', available: false },
     { icon: '👥', title: '健身搭子', desc: '邀请好友一起锻炼', path: '/partners', available: false },
@@ -28,17 +28,6 @@ function Home() {
     if (feature.available) {
       navigate(feature.path);
     }
-  };
-
-const { Title, Text } = Typography;
-
-function Home() {
-  const { user, logout } = useAuthStore();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
   };
 
   return (

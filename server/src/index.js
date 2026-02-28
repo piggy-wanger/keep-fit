@@ -22,10 +22,17 @@ app.get('/api/health', (req, res) => {
 // 认证路由
 import authRoutes from './routes/auth.js';
 import healthRoutes from './routes/health.js';
+import equipmentRoutes, { initEquipment } from './routes/equipment.js';
+import trainingRoutes from './routes/training.js';
 import { authenticateToken } from './middleware/auth.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/health', authenticateToken, healthRoutes);
+app.use('/api/equipment', authenticateToken, equipmentRoutes);
+app.use('/api/training', authenticateToken, trainingRoutes);
+
+// 初始化器材数据
+initEquipment().catch(console.error);
 
 // 错误处理中间件
 app.use((err, req, res, next) => {
