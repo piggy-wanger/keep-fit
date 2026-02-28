@@ -18,8 +18,8 @@ function Home() {
   const features = [
     { icon: '📊', title: '健康数据', desc: '记录体重、血压、步数', path: '/health', available: true },
     { icon: '🏋️', title: '训练计划', desc: '制定你的健身计划', path: '/training', available: true },
-    { icon: '✅', title: '每日打卡', desc: '坚持打卡获得奖励', path: '/checkin', available: false },
-    { icon: '🎯', title: '成就系统', desc: '解锁成就获得经验', path: '/achievements', available: false },
+    { icon: '✅', title: '每日打卡', desc: '坚持打卡获得奖励', path: '/checkin', available: true },
+    { icon: '🎯', title: '成就系统', desc: '解锁成就获得经验', path: '/achievements', available: true },
     { icon: '👥', title: '健身搭子', desc: '邀请好友一起锻炼', path: '/partners', available: false },
     { icon: '🤖', title: 'AI 助手', desc: '智能健身建议', path: '/ai', available: false },
   ];

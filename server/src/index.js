@@ -24,15 +24,20 @@ import authRoutes from './routes/auth.js';
 import healthRoutes from './routes/health.js';
 import equipmentRoutes, { initEquipment } from './routes/equipment.js';
 import trainingRoutes from './routes/training.js';
+import checkinRoutes from './routes/checkin.js';
+import achievementsRoutes, { initAchievements } from './routes/achievements.js';
 import { authenticateToken } from './middleware/auth.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/health', authenticateToken, healthRoutes);
 app.use('/api/equipment', authenticateToken, equipmentRoutes);
 app.use('/api/training', authenticateToken, trainingRoutes);
+app.use('/api/checkin', authenticateToken, checkinRoutes);
+app.use('/api/achievements', authenticateToken, achievementsRoutes);
 
-// 初始化器材数据
+// 初始化数据
 initEquipment().catch(console.error);
+initAchievements().catch(console.error);
 
 // 错误处理中间件
 app.use((err, req, res, next) => {

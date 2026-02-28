@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Health from './pages/Health';
 import Training from './pages/Training';
+import Checkin from './pages/Checkin';
+import Achievements from './pages/Achievements';
 
 // 受保护的路由组件
 function ProtectedRoute({ children }) {
@@ -72,6 +74,22 @@ function App() {
           element={
             <ProtectedRoute>
               <Training />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/checkin"
+          element={
+            <ProtectedRoute>
+              <Checkin />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/achievements"
+          element={
+            <ProtectedRoute>
+              <Achievements />
             </ProtectedRoute>
           }
         />
